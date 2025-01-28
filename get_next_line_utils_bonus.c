@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emgumus <<emgumus@student.42kocaeli.com.tr +#+  +:+       +#+        */
+/*   By: emgumus <emgumus@student.42kocaeli.com.tr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/25 01:37:31 by emgumus           #+#    #+#             */
-/*   Updated: 2025/01/25 01:37:31 by emgumus          ###   ########.fr       */
+/*   Created: 2025/01/28 19:03:57 by emgumus           #+#    #+#             */
+/*   Updated: 2025/01/28 19:07:30 by emgumus          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,17 @@ size_t	ft_strlen(char *s)
 char	*ft_strchr(char *s, int c)
 {
 	size_t			i;
+	unsigned char	ltr;
 
-	if (!s)
-		return (0);
+	if (!s || !c)
+		return (NULL);
 	i = 0;
-	if (c == '\0')
-		return ((char *)&s[ft_strlen(s)]);
-	while (s[i])
-	{
-		if (s[i] == (char) c)
-			return ((char *)&s[i]);
+	ltr = (unsigned char)c;
+	while (s[i] && s[i] != ltr)
 		i++;
-	}
-	return (0);
+	if (s[i] == ltr)
+		return ((char *)&s[i]);
+	return (NULL);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
